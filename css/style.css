@@ -1,0 +1,282 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: sans-serif;
+}
+
+.top-background{
+    height: 20vh;
+    background-color: #009688;
+}
+
+.bottom-background {
+    height: 80vh;
+    background-color: #d9dbd4;
+}
+
+.main-container{
+    height: 90vh;
+    width: 1440px;
+    margin: 5vh 0px;
+    position: absolute;
+    top: 0;
+    left: 240px;
+}
+
+.left-main-container{
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.left-main-container header{
+    height: 10%;
+    background-color: #eaeaea;
+    width: 100%;
+    padding: 15px;
+}
+
+.object-fit img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.display-flex{
+    display: flex;
+}
+
+.icons{
+    padding: 15px;
+    font-size: 20px;
+    color: #b1b1b1;
+}
+
+.icons i {
+    margin: 0px 10px;
+}
+
+.line-height{
+    line-height: 50px;
+}
+
+.content-between{
+    justify-content: space-between;
+}
+
+.notifications{
+    height: 10%;
+    background-color: #8edafc;
+    width: 100%;
+    padding: 20px 10px;
+}
+
+.bell-icon{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: #f2fbff;
+
+}
+
+.bell-icon i{
+    color: #8edafc;
+    margin: 15px 0px 0px 15px;
+}
+
+.notifications-title{
+    margin: 0px 0px 0px 15px;
+}
+.notifications-title *{
+    font-weight: normal;
+}
+
+.notifications-title a{
+    display: block;
+    color: #b1b1b1;
+    text-decoration: underline;
+}
+
+.search-bar-container{
+    height: 7%;
+    background-color: #eaeaea;
+    width: 100%;
+    padding: 10px;
+}
+
+.search-icon{
+    background-color: white;
+    height: 40px;
+    width: 20%;
+    border: 1px solid black;
+}
+
+.search-icon button{
+    margin: 10px 0px 0px 40%;
+}
+
+.search-bar{
+    background-color: white;
+    height: 40px;
+    width: 80%;
+    border: 1px solid black;
+}
+
+.search-bar input{
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+}
+
+main{
+    height: 100%;
+}
+
+.contact-container{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    overflow-y: scroll;
+}
+
+.contact-img img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+.contact-container ul{
+    list-style: none;
+    padding: 0;
+}
+
+.list-contact-item{
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.contact-text{
+    padding: 0px 20px;
+}
+
+.contact-text span{
+    display: block;
+    font-weight: normal;
+    color: lightgray;
+}
+.right-main-container{
+    width: 60%;
+}
+
+.right-main-container header{
+    background-color: #eaeaea;
+    height: 10%;
+    border-left: 1px solid grey;
+    padding: 15px;
+}
+
+.right-main-container main{
+    height: 80%;
+    background-image: url(../img/mine.jpg);
+    overflow-y: scroll;
+}
+
+.right-main-container footer {
+    height: 10%;
+    background-color: #f3eeea;
+    padding: 15px;
+}
+
+.right-main-container footer i{
+    font-size: 24px;
+    color: #b1b1b1;
+    margin: 15px 20px;
+}
+
+.contact-informations{
+    padding: 5px 20px;
+}
+
+.contact-informations span{
+    display: block;
+    font-weight: normal;
+    color: #b1b1b1;
+}
+
+.message-input{
+    width: 80%;
+}
+
+.message-input input{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+
+.right-main-container main ul{
+    padding: 0;
+    list-style: none;
+    width: 600px;
+    margin: auto;
+}
+
+.right-main-container main ul li{
+   margin: 10px 0px;
+}
+
+.message-box{
+    display: flex;
+    height: 50px;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.sent{
+    justify-content: flex-end;
+}
+
+.sent .message-box{
+    background-color: #d5f9ba;
+}
+
+.received{
+    justify-content: flex-start;
+}
+
+.received .message-box {
+    background-color: white;
+}
+
+.delete-message{
+    color: #b1b1b1;
+    margin: 0px 5px;
+}
+
+.message-box .ms_width_200{
+    width: 200px;
+}
+
+.message-box button{
+    border: transparent;
+    background-color: transparent;
+    height: 20px;
+    width: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    position: relative;
+    display: none;
+}
+
+.message-box:hover button{
+    display: block;
+}
+
+.message-box button i{
+    position: absolute;
+    top: 10%;
+    left: 25%;
+}
+
