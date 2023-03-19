@@ -3,7 +3,8 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
-            lastmessage: 'Ultimo messaggio inviato',
+            newMessage: '',
+            currentContact: 0,
             contacts: [
                 {
                     name: 'Michele',
@@ -256,5 +257,33 @@ createApp({
                 }
             ]    
         }
+    },
+    methods: {
+        showCurrentContact(index){
+            this.currentContact = index;
+        },
+        pushNewMessage(){
+           this.contacts[this.currentContact].messages.push({
+                date: '',
+                message: this.newMessage,
+                status: 'sent',
+            })
+            this.newMessage= '';
+        },
+        deleteMessage(index){
+            this.contacts[this.currentContact].messages.splice(index, 1);
+        },
+        messageReplay(){
+            this.contacts[this.currentContact].messages.push({
+                date: '',
+                message: 'ok!',
+                status: 'received',
+            })
+        },
+        autoMessageReplay(){
+            setTimeout(messageReplay(), 5000);
+            
+        }
+
     },
 }).mount('#app')

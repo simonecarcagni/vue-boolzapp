@@ -47,14 +47,14 @@
                         </div>
                     </div>
                     <div class="contact-container">
-                        <ul>
-                            <li v-for="contact in contacts" class="list-contact-item display-flex">
+                        <ul v-for="(contact, index) in contacts">
+                            <li @click="showCurrentContact(index)" class="list-contact-item display-flex">
                                <div class="contact-img">
                                     <img :src="contact.avatar" :alt="contact.name">
                                </div>
                                <div class="contact-text">
                                     {{contact.name}}
-                                    <span>{{lastmessage}}</span>
+                                    <span>{{contacts[index].messages[1].message}}</span>
                                </div>
                             </li>
                         </ul>
@@ -65,10 +65,10 @@
                 <header class="display-flex content-between">
                     <div class="display-flex ">
                         <div class="object-fit">
-                            <img src="./img/avatar_io.jpg" alt="">
+                            <img :src="contacts[currentContact].avatar" alt="">
                         </div>
                         <div class="contact-informations">
-                            Sofia
+                            {{contacts[currentContact].name}}
                             <span>Ultimo accesso di oggi alle 12:00 </span>
                         </div>
                     </div>
@@ -79,75 +79,20 @@
                     </div>
                 </header>
                 <main>
-                    <ul>
-                        <li class="display-flex sent">
-                            <div class="message-box">
-                                <span>Ciao come stai?</span>
-                                <div class="dropup-center dropup">
-                                    <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-sharp fa-solid fa-chevron-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu ms_width_200">
-                                        <li><a class="dropdown-item" href="#">Informazioni messaggio</a></li>
-                                        <li><a class="dropdown-item" href="#">Elimina messaggio</a></li>
-                                        
-                                    </ul>
+                    <ul v-for="(message, index) in contacts[currentContact].messages">
+                        <li :class="message.status=='received'?'received':'sent'" class="display-flex">
+                            <div class="message-box"> 
+                                <div class="message">
+                                    {{message.message}}
+                                    <span class="date">{{message.date}}</span>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="display-flex received">
-                            <div class="message-box">
-                                <span>Ciao come stai?</span>
                                 <div class="dropup-center dropup">
                                     <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fa-sharp fa-solid fa-chevron-down"></i>
                                     </button>
                                     <ul class="dropdown-menu ms_width_200">
                                         <li><a class="dropdown-item" href="#">Informazioni messaggio</a></li>
-                                        <li><a class="dropdown-item" href="#">Elimina messaggio</a></li>
-                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </li><li class="display-flex sent">
-                            <div class="message-box">
-                                <span>Ciao come stai?</span>
-                                <div class="dropup-center dropup">
-                                    <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-sharp fa-solid fa-chevron-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu ms_width_200">
-                                        <li><a class="dropdown-item" href="#">Informazioni messaggio</a></li>
-                                        <li><a class="dropdown-item" href="#">Elimina messaggio</a></li>
-                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </li><li class="display-flex received">
-                            <div class="message-box">
-                                <span>Ciao come stai?</span>
-                                <div class="dropup-center dropup">
-                                    <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-sharp fa-solid fa-chevron-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu ms_width_200">
-                                        <li><a class="dropdown-item" href="#">Informazioni messaggio</a></li>
-                                        <li><a class="dropdown-item" href="#">Elimina messaggio</a></li>
-                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </li><li class="display-flex sent">
-                            <div class="message-box">
-                                <span>Ciao come stai?</span>
-                                <div class="dropup-center dropup">
-                                    <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="fa-sharp fa-solid fa-chevron-down"></i>
-                                    </button>
-                                    <ul class="dropdown-menu ms_width_200">
-                                        <li><a class="dropdown-item" href="#">Informazioni messaggio</a></li>
-                                        <li><a class="dropdown-item" href="#">Elimina messaggio</a></li>
-                        
+                                        <li @click="deleteMessage(index)"><a class="dropdown-item" href="#">Elimina messaggio</a></li>    
                                     </ul>
                                 </div>
                             </div>
@@ -159,7 +104,7 @@
                         <i class="fa-regular fa-face-smile"></i>
                     </div>
                     <div class="message-input">
-                       <input type="text" placeholder="Scrivi un messaggio">
+                       <input type="text" placeholder="Scrivi un messaggio" v-model="newMessage" @keyup.enter="pushNewMessage" @click="autoMessageReplay">
                     </div>
                     <div>
                       <i class="fa-solid fa-microphone"></i>

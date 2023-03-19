@@ -231,7 +231,7 @@ main{
     display: flex;
     height: 50px;
     border-radius: 10px;
-    padding: 15px;
+    padding: 15px 30px;
 }
 
 .sent{
@@ -280,3 +280,14 @@ main{
     left: 25%;
 }
 
+.date{
+    font-size: 10px;
+    position: absolute;
+    top: 100%;
+    right: -25px;
+    width: 100px;
+}
+
+.message{
+    position: relative;
+}
