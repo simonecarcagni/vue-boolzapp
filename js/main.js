@@ -1,8 +1,10 @@
+const DateTime = luxon.DateTime; 
 const { createApp } = Vue
 
 createApp({
     data() {
         return {
+            dateUpdate: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
             newMessage: '',
             currentContact: 0,
             contacts: [
@@ -263,27 +265,30 @@ createApp({
             this.currentContact = index;
         },
         pushNewMessage(){
-           this.contacts[this.currentContact].messages.push({
-                date: '',
+            this.contacts[this.currentContact].messages.push({
+                date: this.dateUpdate,
                 message: this.newMessage,
                 status: 'sent',
             })
             this.newMessage= '';
+            this.autoMessageReplay();
         },
         deleteMessage(index){
             this.contacts[this.currentContact].messages.splice(index, 1);
         },
         messageReplay(){
             this.contacts[this.currentContact].messages.push({
-                date: '',
+                date: this.dateUpdate,
                 message: 'ok!',
                 status: 'received',
             })
         },
         autoMessageReplay(){
-            setTimeout(messageReplay(), 5000);
-            
+           setTimeout(this.messageReplay(), 10000);
         }
 
     },
 }).mount('#app')
+
+
+
