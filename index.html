@@ -43,19 +43,19 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                         <div class="search-bar">
-                            <input type="text" placeholder="Cerca o inizia una nuova chat">
+                            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="ricercaUtenti" @keydown.enter="searchContact()">
                         </div>
                     </div>
                     <div class="contact-container">
-                        <ul v-for="(contact, index) in contacts">
-                            <li @click="showCurrentContact(index)" class="list-contact-item display-flex">
+                        <ul>
+                            <li v-for="(contact, index) in contacts" @click="showCurrentContact(index)" class="list-contact-item display-flex">
                                <div class="contact-img">
                                     <img :src="contact.avatar" :alt="contact.name">
                                </div>
                                <div class="contact-text">
                                     {{contact.name}}
-                                    <span class="lastmessage">{{contacts[index].messages[1].message}}</span>
-                                    <span class="lastdate">{{contacts[index].messages[1].date}}</span>
+                                    <span class="lastmessage">{{contacts[index].messages[contacts[index].messages.length - 1].message}}</span>
+                                    <span class="lastdate">{{contacts[index].messages[contacts[index].messages.length - 1].date}}</span>
                                </div>
                             </li>
                         </ul>
@@ -80,8 +80,8 @@
                     </div>
                 </header>
                 <main>
-                    <ul v-for="(message, index) in contacts[currentContact].messages">
-                        <li :class="message.status=='received'?'received':'sent'" class="display-flex">
+                    <ul>
+                        <li v-for="(message, index) in contacts[currentContact].messages" :class="message.status=='received'?'received':'sent'" class="display-flex">
                             <div class="message-box"> 
                                 <div class="message">
                                     <span>{{message.message}}</span> 

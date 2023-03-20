@@ -4,6 +4,7 @@ const { createApp } = Vue
 createApp({
     data() {
         return {
+            ricercaUtenti: '',
             dateUpdate: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
             newMessage: '',
             currentContact: 0,
@@ -110,7 +111,7 @@ createApp({
                 },
                 {
                     name: 'Claudia',
-                    avatar: './img/avatar_5.jpg',
+                    avatar: './img/avatar_6.jpg',
                     visible: true,
                     messages: [
                         {
@@ -168,94 +169,6 @@ createApp({
                             status: 'received'
                         }
                     ],
-                },
-                {
-                    name: 'Davide',
-                    avatar: './img/avatar_8.jpg',
-                    visible: true,
-                    messages: [
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'OK!!',
-                            status: 'received'
-                        }
-                    ],
-                },
-                {
-                    name: 'Davide',
-                    avatar: './img/avatar_8.jpg',
-                    visible: true,
-                    messages: [
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'OK!!',
-                            status: 'received'
-                        }
-                    ],
-                },
-                {
-                    name: 'Davide',
-                    avatar: './img/avatar_8.jpg',
-                    visible: true,
-                    messages: [
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'OK!!',
-                            status: 'received'
-                        }
-                    ],
-                },
-                {
-                    name: 'Davide',
-                    avatar: './img/avatar_8.jpg',
-                    visible: true,
-                    messages: [
-                        {
-                            date: '10/01/2020 15:30:55',
-                            message: 'Ciao, andiamo a mangiare la pizza stasera?',
-                            status: 'received'
-                        },
-                        {
-                            date: '10/01/2020 15:50:00',
-                            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
-                            status: 'sent'
-                        },
-                        {
-                            date: '10/01/2020 15:51:00',
-                            message: 'OK!!',
-                            status: 'received'
-                        }
-                    ],
                 }
             ]    
         }
@@ -284,7 +197,13 @@ createApp({
             })
         },
         autoMessageReplay(){
-           setTimeout(this.messageReplay(), 10000);
+           setTimeout(this.messageReplay, 3000);
+        },
+        searchContact(){
+            (this.contacts.forEach((name, visible) => {
+                
+            }))
+            
         }
 
     },

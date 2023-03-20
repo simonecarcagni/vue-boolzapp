@@ -29,7 +29,10 @@ html{
 .left-main-container{
     width: 40%;
     height: 100%;
-    overflow: hidden;
+}
+
+.left-main-container main{
+    height: 90%;
 }
 
 .left-main-container header{
@@ -68,7 +71,7 @@ html{
 }
 
 .notifications{
-    height: 10%;
+    height: 12%;
     background-color: #8edafc;
     width: 100%;
     padding: 20px 10px;
@@ -101,7 +104,7 @@ html{
 }
 
 .search-bar-container{
-    height: 7%;
+    height: 8%;
     background-color: #eaeaea;
     width: 100%;
     padding: 10px;
@@ -131,13 +134,9 @@ html{
     padding: 10px;
 }
 
-main{
-    height: 100%;
-}
-
 .contact-container{
     width: 100%;
-    height: 100%;
+    height: 80%;
     background-color: white;
     overflow-y: scroll;
 }
@@ -153,14 +152,13 @@ main{
 }
 
 .list-contact-item{
-    padding: 10px;
     border-bottom: 1px solid black;
     position: relative;
+    padding: 10px;
 }
 
 .contact-text{
     padding: 0px 20px;
-    
 }
 
 .contact-text .lastmessage{
@@ -174,7 +172,6 @@ main{
     top: 0px;
     right: 10px;
     font-size: 12px;
-    color: lightgray;
 }
 .right-main-container{
     width: 60%;
@@ -227,14 +224,14 @@ main{
 
 
 .right-main-container main ul{
-    padding: 0;
+    padding-top: 30px;
     list-style: none;
-    width: 600px;
+    width: 700px;
     margin: auto;
 }
 
 .right-main-container main ul li{
-   margin: 10px 0px;
+   padding: 10px 0px;
 }
 
 .message-box{
@@ -242,7 +239,7 @@ main{
     height: 60px;
     border-radius: 10px;
     padding: 10px 30px 15px 30px;
-    width: 50%;
+    width: 45%;
 }
 
 .sent{
