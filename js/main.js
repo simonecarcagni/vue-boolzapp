@@ -5,7 +5,6 @@ createApp({
     data() {
         return {
             ricercaUtenti: '',
-            dateUpdate: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
             newMessage: '',
             currentContact: 0,
             contacts: [
@@ -179,7 +178,7 @@ createApp({
         },
         pushNewMessage(){
             this.contacts[this.currentContact].messages.push({
-                date: this.dateUpdate,
+                date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
                 message: this.newMessage,
                 status: 'sent',
             })
@@ -191,7 +190,7 @@ createApp({
         },
         messageReplay(){
             this.contacts[this.currentContact].messages.push({
-                date: this.dateUpdate,
+                date: DateTime.now().setLocale('it').toLocaleString(DateTime.DATETIME_SHORT_WITH_SECONDS),
                 message: 'ok!',
                 status: 'received',
             })
@@ -200,14 +199,17 @@ createApp({
            setTimeout(this.messageReplay, 3000);
         },
         searchContact(){
-            (this.contacts.forEach((name, visible) => {
-                
+            (this.contacts.forEach(element => {
+                if(element.name.toLowerCase().includes(this.ricercaUtenti.toLowerCase())){
+                    element.visible=true;
+                } else {
+                    element.visible=false;
+                }
             }))
             
         }
 
     },
 }).mount('#app')
-
 
 

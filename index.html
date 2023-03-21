@@ -43,20 +43,23 @@
                             <i class="fa-solid fa-magnifying-glass"></i>
                         </button>
                         <div class="search-bar">
-                            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="ricercaUtenti" @keydown.enter="searchContact()">
+                            <input type="text" placeholder="Cerca o inizia una nuova chat" v-model="ricercaUtenti" @keyup="searchContact()">
                         </div>
                     </div>
                     <div class="contact-container">
                         <ul>
-                            <li v-for="(contact, index) in contacts" @click="showCurrentContact(index)" class="list-contact-item display-flex">
+                            <li v-for="(contact, index) in contacts" @click="showCurrentContact(index)" class="list-contact-item display-flex" :class="(contact.visible==true)?'visible':'invisible'" >
                                <div class="contact-img">
                                     <img :src="contact.avatar" :alt="contact.name">
                                </div>
-                               <div class="contact-text">
-                                    {{contact.name}}
-                                    <span class="lastmessage">{{contacts[index].messages[contacts[index].messages.length - 1].message}}</span>
-                                    <span class="lastdate">{{contacts[index].messages[contacts[index].messages.length - 1].date}}</span>
-                               </div>
+                            <div v-if="contacts[index].messages.length==0" class="contact-text">
+                                {{contact.name}}
+                            </div>
+                            <div v-else class="contact-text">
+                                {{contact.name}}
+                                <span class="lastmessage">{{contacts[index].messages[contacts[index].messages.length - 1].message}}</span>
+                                <span class="lastdate">{{contacts[index].messages[contacts[index].messages.length - 1].date}}</span>
+                            </div>
                             </li>
                         </ul>
                     </div>
@@ -80,7 +83,7 @@
                     </div>
                 </header>
                 <main>
-                    <ul>
+                    <ul class="message-list">
                         <li v-for="(message, index) in contacts[currentContact].messages" :class="message.status=='received'?'received':'sent'" class="display-flex">
                             <div class="message-box"> 
                                 <div class="message">
